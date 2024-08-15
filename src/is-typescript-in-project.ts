@@ -17,7 +17,13 @@ export async function isTypeScriptInProject(): Promise<boolean> {
 
   while (currentPath !== prevPath) {
     if (await pathContainsItem(currentPath, "package.json")) {
-      return await pathContainsItem(currentPath, "tsconfig.json");
+      return (
+        (await pathContainsItem(currentPath, "tsconfig.json")) ||
+        (await pathContainsItem(currentPath, "tsconfig.spec.json")) ||
+        (await pathContainsItem(currentPath, "tsconfig.editor.json")) ||
+        (await pathContainsItem(currentPath, "tsconfig.app.json")) ||
+        (await pathContainsItem(currentPath, "tsconfig.base.json"))
+      );
     }
 
     prevPath = currentPath;
