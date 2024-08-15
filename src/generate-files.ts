@@ -98,8 +98,12 @@ async function generateSegment(
     return resolve(path, existingSegment);
   }
 
+  const indexFile = `index.${isTypeScript ? "ts" : "js"}`;
   const segmentPath = resolve(path, name);
+  const indexFilePath = resolve(segmentPath, indexFile);
+
   await fs.mkdir(segmentPath, { recursive: true });
+  await fs.writeFile(indexFilePath, "");
 
   return segmentPath;
 }
