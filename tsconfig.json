@@ -4,7 +4,8 @@
     "lib": ["ESNext"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "target": "ESNext"
+    "target": "ESNext",
+    "outDir": "dist"
   },
   "include": ["src/**/*"]
 }
